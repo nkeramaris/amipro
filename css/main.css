@@ -1,0 +1,67 @@
+
+.navbar.navbar-default {
+  margin-bottom: 0px;
+}
+
+.jumbotron {
+  height:350px;
+  width: 100%;
+  background: url('/Users/Home/Desktop/amipro website/img/uhm8memevyq-jace-grandinetti.jpg') no-repeat center center fixed; 
+  background-size: cover;
+  font-weight: bold;
+}
+
+.jumbotron .container {
+  margin-left: 80px;
+  width:600px;
+  color: white;
+  font-family: 'Raleway', serif;
+}
+
+.jumbotron .container .main p {
+  font-size: 50px;
+  font-weight: bold; 
+}
+
+.supporting .title {
+  text-align: center;
+  font-family: 'Raleway', serif;
+  color:#333333;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.supporting .text {
+  font-family: 'Raleway', serif;
+  color:#333333;
+  font-size:18px;
+  width: 75%;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+.supporting .text .wrapper a {
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  font-weight: bold; 
+  font-size: 18px;
+  width:350px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  padding: auto;
+  margin-top: 30px;
+}
+
+
+
+
+
+
+
+
+
