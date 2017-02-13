@@ -1,6 +1,7 @@
 
 .navbar.navbar-default {
   margin-bottom: 0px;
+  font-family: 'Raleway', serif;
 }
 
 .jumbotron {
@@ -13,7 +14,7 @@
 
 .jumbotron .container {
   margin-left: 80px;
-  width:600px;
+  width:650px;
   color: white;
   font-family: 'Raleway', serif;
 }
@@ -21,6 +22,26 @@
 .jumbotron .container .main p {
   font-size: 50px;
   font-weight: bold; 
+}
+
+.jumbotron .container .terms {
+  margin-top: -20px;
+}
+
+.jumbotron .container .button {
+  margin-left: 470px;
+  border:1px solid white;
+  border-radius:0px
+  background-color:transparent;
+  padding:3px;
+  text-decoration: none;
+  font-size: 10px; 
+  color:white;
+  font-weight: bold;
+}
+
+.jumbotron .container a:visited {
+  color:white;
 }
 
 .supporting .title {
@@ -57,8 +78,27 @@
   margin-top: 30px;
 }
 
+.how-it-works{
+  background-color:#333333;
+  margin-top:-5rem;
+  padding-top:6.2rem;
+  text-align:center;
+  position:relative;
+}
 
+.how-it-works p {
+  font-family:'Raleway', serif;
+  letter-spacing: 1.3px;
+  font-size: 30px;
+  color:white;
+  margin-top: -25px;
+}
 
+.how-it-works .buyers-and-sellers-buttons-container {
+  background:#333333;
+  color:white;
+  font-family: 'Raleway', serif;
+}
 
 
 
