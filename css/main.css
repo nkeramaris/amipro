@@ -94,11 +94,41 @@
   margin-top: -25px;
 }
 
-.how-it-works .buyers-and-sellers-buttons-container {
-  background:#333333;
-  color:white;
+.how-it-works .buyers-and-sellers-buttons {
+  background:white;
+  width:300px;
+  height: 50px;
+  margin:auto;
   font-family: 'Raleway', serif;
 }
+
+.how-it-works .buyers-and-sellers-buttons {
+  background:white;
+  width:300px;
+  height: 50px;
+  margin:auto;
+  font-family: 'Raleway', serif;
+}
+
+.how-it-works .buyers-and-sellers-buttons-container {
+  background:white;
+  margin-top: 20px;
+}
+
+.how-it-works .buyers-and-sellers-buttons a {
+  color:#333333;
+  position: relative; 
+  display: inline-block;
+  text-align: center;
+  margin-top: 13px;
+  padding-right: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
 
 
 
