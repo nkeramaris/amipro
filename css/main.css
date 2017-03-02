@@ -89,43 +89,42 @@
 .how-it-works p {
   font-family:'Raleway', serif;
   letter-spacing: 1.3px;
-  font-size: 30px;
+  font-size: 40px;
   color:white;
   margin-top: -25px;
 }
 
 .how-it-works .buyers-and-sellers-buttons {
-  background:white;
-  width:300px;
-  height: 50px;
+  background-color:#333333;
   margin:auto;
   font-family: 'Raleway', serif;
-}
+  overflow: hidden;
 
-.how-it-works .buyers-and-sellers-buttons {
-  background:white;
-  width:300px;
-  height: 50px;
-  margin:auto;
-  font-family: 'Raleway', serif;
-}
-
-.how-it-works .buyers-and-sellers-buttons-container {
-  background:white;
-  margin-top: 20px;
 }
 
 .how-it-works .buyers-and-sellers-buttons a {
-  color:#333333;
+  color:white;
   position: relative; 
   display: inline-block;
   text-align: center;
-  margin-top: 13px;
-  padding-right: 20px;
+  margin:auto;
+  width: 177px; 
+  height: 50px;
   text-decoration: none;
-  transition: 0.3s;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
+  padding-top: 10px;
+}
+
+/* Create an active/current tablink class */
+.how-it-works .buyers-and-sellers-buttons a:focus, .active {
+    background-color: white;
+    color:  #333333;
+}
+
+.buyers-section {
+  font-family: 'Raleway', serif;
+  list-style-type: none;
 }
 
 

@@ -50,12 +50,22 @@
     <section class="how-it-works">
       <p>Here's how it works</p>
       <div class = 'buyers-and-sellers-buttons'>
-        <div class = 'buyers-and-sellers-buttons-container'>
-          <a href='javascript:void(0)' class='tablinks' onclick="openTab(event, 'For Buyers')"> For Buyers</a>
-          <a href='javascript:void(0)' class='tablinks' onclick="openTab(event, 'For Sellers')"> For Sellers</a>
-        </div> 
+          <a href='javascript:void(0)' class='tablinks' onclick="openTab(event, 'forBuyers')" id="defaultOpen"> For Buyers</a>
+          <a href='javascript:void(0)' class='tablinks' onclick="openTab(event, 'forSellers')"> For Sellers</a>
       </div>
     </section>
+    <div id='forBuyers' class='tabcontent'>
+        <ul class='buyers-section' style='display: block;'>
+          <li class='buyer-1'>
+            <h3> Find Your Home </h3>
+            <p> Search our database </p>
+          </li>
+        </ul>
+      </div>
+      <div id='forSellers' class='tabcontent'>
+        <h1> CONTENT FOR SELLERS </h1>
+        <p> THIS IS THE CONTENT FOR SELLERS </p>
+      </div>
     <div class= supporting>
       <div class= title>
         <p> Zero Commission?</p>
@@ -90,7 +100,23 @@
     </div>
 
     <script>
-      
+      // Display the relevant content below the tab which is clicked on
+      function openTab(evt, tab) {
+        var i, tabcontent, tablinks; 
+        tabcontent = document.getElementsByClassName('tabcontent');
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = 'none';
+        }
+        tablinks = document.getElementsByClassName('tablinks');
+        for(i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(' active', '');
+        }
+        document.getElementById(tab).style.display = 'block';
+        evt.currentTarget.className += ' active'
+      }
+
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
     </script>
   </body>
 </html>
