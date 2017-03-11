@@ -125,12 +125,69 @@
 .buyers-section {
   font-family: 'Raleway', serif;
   list-style-type: none;
+  padding-left: 110px;
+  padding-right: 110px;
 }
 
+.buyer-1  h3 {
+  width: 250px;
+  display: inline-block;
+}
 
+.buyer-1  p {
+  width: 350px;
+}
 
+.buyer-1 .number {
+  margin-left: 47.5%;
+  margin-top: -110px;
+}
 
+.dot-dot-dot {
+  margin-left: 46.75%;
+  margin-top: 3px;
+}
 
+.buyer-1 a {
+  color: #333333;
+  border: 1px solid #333333;
+  border-radius:5px;
+  background-color:transparent;
+  padding:3px;
+  text-decoration: none;
+  font-size: 12px; 
+  font-weight: bold;
+}
 
+.buyer-1 a:hover {
+  text-decoration: none;
+  color: #333333;
+}
+
+.buyer-2  h3 {
+  width: 250px;
+  float:right;
+}
+
+.buyer-2  p {
+  width: 350px;
+  float: right;
+  clear: right;
+}
+
+.buyer-2 .number {
+  margin-left: 47.5%;
+  margin-top: 3px;
+}
+
+.buyer-3 .number {
+  margin-left: 47.5%;
+  margin-top: -85px;
+}
+
+.temp {
+  margin-top: 200px;
+
+}
 
 
