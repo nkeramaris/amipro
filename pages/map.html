@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-    <link type="text/css" rel="stylesheet" href="/Users/Home/Desktop/amipro website/css/map.css"/>
+    <!-- load d3     -->
+    <script type="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.2/d3.js"></script>
+
+    <!-- load mapbox -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.33.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.33.1/mapbox-gl.css' rel='stylesheet' />
+
   </head>
   <body>
-    <div id="mapid">
-
+    <div id="map" style='width: 400px; height: 300px;'>
     </div>
-    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js">
-    	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+
+    <script>     
+      
+      // create map using mapbox
+      m.accessToken = 'pk.eyJ1IjoibmtlcmFtYXJpcyIsImEiOiJjajA1bXp3cm8waTNpMzNteTI0dGJwY3ptIn0.7tKTALy0L0mmlbHk2eWRMw';
+
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: [-.1, 51.519112],
+        zoom: 16,
+        zoomControl:true
+        });
+
+      map.addControl(new mapboxgl.NavigationControl());
+    
+      /* add points to map 
+       d3.csv('/Users/Home/Desktop/amipro website/bogle.csv', function(data)) {
+       	console.log('data:', data);
+       }); */
+
     </script>
   </body>
 </html>
