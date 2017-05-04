@@ -11,27 +11,23 @@
   color: white;
 }
 
-.cta-splash {
-    height: 450px;
-    position: left;
-    margin-bottom: 70px;
+.jumbotron {
+  height:450px;
+  width: 100%;
+  background-size: cover;
+  font-weight: bold;
 }
 
-.cta-splash .background-image-overlay {
-    background-image: url(https://image-service.blueapron.com/render/q/quality/75/src/https%3A%2F%2Fmedia.blueapron.com%2Fhome_page%2FSplash%2F011317_Homepage_desktop.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 450px;
-    position: absolute;
-    left: 0;
-    right: 0;
-
-
-.cta-splash .splash-placeholder-overlay {
-    display: none;
+.video {
+  max-height: 450px;
+  width: 100%;
+  margin-top: -70px;
+  object-fit: fill;
 }
 
-
+.source{
+  object-fit: contain;
+}
 
 .how-it-works{
   background-color:#333333;
@@ -166,4 +162,3 @@
   margin-top: 300px;
 
 }
-

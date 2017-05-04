@@ -43,12 +43,14 @@
         </div>
       </div>
     </nav>
-    <section class='cta-splash'>
-      <div class='background-image-overlay'>
-        <img class="splash-placeholder-overlay" src='/Users/Home/Desktop/amipro website/img/uhm8memevyq-jace-grandinetti.jpg'>
-      </div>	
-    </section>
-
+    <div class='jumbotron'>
+      <video class= 'video' controls poster="/Users/Home/Desktop/amipro website/img/uhm8memevyq-jace-grandinetti.jpg">
+         <source src='/Users/Home/Desktop/amipro website/video/demo.mp4'>
+      </video>
+      <div class='txt-center video-frame--txt'>
+        <h2>The Zero Commission Real Estate Brokerage</h2>
+      </div>
+    </div>
     <section class="how-it-works">
       <p>Here's how it works</p>
       <div class = 'buyers-and-sellers-buttons'>
@@ -118,7 +120,6 @@
         document.getElementById(tab).style.display = 'block';
         evt.currentTarget.className += ' active'
       }
-
       // Get the element with id="defaultOpen" and click on it
       document.getElementById("defaultOpen").click();
     </script>
