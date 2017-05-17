@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+
+<? php 
+
+  include('/Users/Home/Desktop/amipro website/php/dbconnection.php');
+
+  $DBConnection = new DBConnection();
+
+?>
+
 <html>
   <head>
 
@@ -12,7 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link type="text/css" rel="stylesheet" href="/Users/Home/Desktop/amipro website/css/main.css"/>
+    <link type="text/css" rel="stylesheet" href="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/css/main.css"/>
   </head>
 
   <body>
@@ -33,10 +42,10 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li><a href="tel:1-800-123-4567">1-800-123-4567</a></li>
-            <li><a href="/Users/Home/Desktop/amipro website/pages/about.html">About Us</a></li>
-            <li><a href="/Users/Home/Desktop/amipro website/pages/buy.html">Buy</a></li>
-            <li><a href="/Users/Home/Desktop/amipro website/pages/sell.html">Sell</a></li>
-            <li><a href="/Users/Home/Desktop/amipro website/pages/login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/pages/about.html">About Us</a></li>
+            <li><a href="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/pages/buy.html">Buy</a></li>
+            <li><a href="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/pages/sell.html">Sell</a></li>
+            <li><a href="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/pages/login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
@@ -49,24 +58,34 @@
 
     <!-- Jumbotron -->
     <div class='jumbotron'>
-        <video class= 'video' poster="/Users/Home/Desktop/amipro website/img/boston-skyline.jpg">
-           <source src='/Users/Home/Desktop/amipro website/video/demo.mp4'>
+        <video class= 'video' poster="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/img/boston-skyline.jpg">
+           <source src='/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/video/demo.mp4'>
         </video>
         <p id="jumbotron-text">The Zero Commission <br> Real Estate Brokerage</p>
     </div>
     
     <!-- Search -->
     <div class = "search-container">
-      <div class='title-container'>
+      <div class='searchHeader' id='seachBuyers'>
+        <p>Search Our Database of MLS Lisings</p>
+      </div>
+      <div class='searchHeader' id='searchSellers'>
+        <p>Get a Free Home Valuation Report</p>
       </div>
        <div class = 'searchbar-buttons'>
-          <a href='javascript:void(0)' class='searchbar-tabs' onclick="openTab(event, 'forBuyers')" id="defaultOpen">Search for a Home</a>
-          <a href='javascript:void(0)' class='searchbar-tabs' onclick="openTab(event, 'forSellers')">Get a Sale Price Evaluation</a>
+          <a href='javascript:void(0)' class='searchbar-tabs' onclick="openSearch(event, 'seachBuyers')" id="defaultOpen">Search for a Home</a>
+          <a href='javascript:void(0)' class='searchbar-tabs' onclick="openSearch(event, 'searchSellers')">Get a Sale Price Evaluation</a>
       </div>
-      <div class="content">
-        <form>
-            <input type="text" name="city" size="30" class="city" placeholder="Enter City, Neighborhood or ZIP code">
-            <input type="button" class = 'search-button' value="Go">
+      <div class="content" id='seachBuyers'>
+        <form class="form-wrapper cf">
+  	      <input type="text" placeholder="Enter City, Neighborhood or ZIP code" required>
+	      <button type="submit">Search</button>
+        </form>
+      </div>
+      <div class="content" id='seachSellers'>
+        <form class="form-wrapper cf">
+          <input type="text" placeholder="Enter Your Home's Address" required>
+        <button type="submit">Search</button>
         </form>
       </div>
     </div> 
@@ -86,20 +105,20 @@
             <p> Search our database of MLS listings to find the home that's perfect for you.</p>
             <a href='/Users/Home/Desktop/amiagent website/pages/search.html' class='button'>Search Now</a>
             <div class='number'>
-              <img src='/Users/Home/Desktop/amipro website/img/numbers-1-icon.png'>
+              <img src='/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/img/numbers-1-icon.png'>
             </div>
             <div class='dot-dot-dot'>
-              <img src="/Users/Home/Desktop/amipro website/img/vertical_dots.png" width="64" height="64">
+              <img src="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/img/vertical_dots.png" width="64" height="64">
             </div>
           </li>
           <li class='buyer-2'>
             <h3> View Your Home </h3>
             <p> Contact the listing agent directly to schedule a viewing, or attend the next open house.</p>
             <div class='number'>
-              <img src='/Users/Home/Desktop/amipro website/img/numbers-2-icon.png'>
+              <img src='/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/img/numbers-2-icon.png'>
             </div>
             <div class='dot-dot-dot'>
-              <img src="/Users/Home/Desktop/amipro website/img/vertical_dots.png" width="64" height="64">
+              <img src="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/img/vertical_dots.png" width="64" height="64">
             </div>
           </li>
           <li class='buyer-3'>
@@ -107,10 +126,10 @@
             <p>  Using our state-of-the-art analytics, determine the ideal price and make an offer.  The forms, checklists, and guidance we provide make it easy. </p>
             <br><br><br><br><br>
             <div class="carousel-3">
-              <div><img src="/Users/Home/Desktop/amipro website/img/map_layout.png" height="200" width="350"></div>
+              <div><img src="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/img/map_layout.png" height="200" width="350"></div>
             </div>
             <div class='number'>
-              <img src='/Users/Home/Desktop/amipro website/img/numbers-3-icon.png'>
+              <img src='/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/img/numbers-3-icon.png'>
             </div>
           </li> 
           <li class='buyer-4'> 
@@ -127,24 +146,7 @@
       </div>
 
     <script>
-      // In "How It Works" Section, display the relevant content below the tab which is clicked on
-      function openTab(evt, tab) {
-        var i, tabcontent, tablinks; 
-        tabcontent = document.getElementsByClassName('tabcontent');
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = 'none';
-        }
-        tablinks = document.getElementsByClassName('tablinks');
-        for(i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(' active', '');
-        }
-        document.getElementById(tab).style.display = 'block';
-        evt.currentTarget.className += ' active'
-      }
-
-      // In "How It Works" Section, get the element with id="defaultOpen" and click on it
-      document.getElementById("defaultOpen").click();
-
+    // JUMBOTRON SCRIPT
       // Create play button for jumbotron video
       var videoPlayButton,
 
@@ -181,6 +183,70 @@
 	}
 
 videoMethods.renderVideoPlayButton()
+
+     //SEARCH SCRIPT
+       // In Search Section, display the corresponding content above the tab which is clicked on
+       function openSearch(evt, tab) {
+
+        var i, tabcontent, tablinks, searchcontent, searchbar; 
+
+        tabcontent = document.getElementsByClassName('searchHeader');
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = 'none';
+        }
+
+        tablinks = document.getElementsByClassName('searchbar-tabs');
+        for(i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(' active', '');
+        }
+
+        searchcontent = document.getElementsByClassName('content');
+        for (i = 0; i < searchcontent.length; i++) {
+          searchcontent[i].style.display = 'none';
+        }
+
+        searchbar = document.getElementsByClassName('searchbar-tabs');
+        for(i = 0; i < searchbar.length; i++) {
+          searchbar[i].className = searchbar[i].className.replace(' active', '');
+        }
+
+        document.getElementById(tab).style.display = 'block';
+        evt.currentTarget.className += ' active'
+      }
+      
+      // In Search Section, display the corresponding search bar below the tab which is clicked on
+      /*function openSearchbar(evt, tab) {
+        var i, tabcontent, tablinks; 
+        tabcontent = document.getElementsByClassName('content');
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = 'none';
+        }
+        tablinks = document.getElementsByClassName('searchbar-tabs');
+        for(i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(' active', '');
+        }
+        document.getElementById(tab).style.display = 'block';
+        evt.currentTarget.className += ' active'
+      }*/
+
+     // HOW IT WORKS SCRIPT
+      // In "How It Works" Section, display the relevant content below the tab which is clicked on
+      function openTab(evt, tab) {
+        var i, tabcontent, tablinks; 
+        tabcontent = document.getElementsByClassName('tabcontent');
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = 'none';
+        }
+        tablinks = document.getElementsByClassName('tablinks');
+        for(i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(' active', '');
+        }
+        document.getElementById(tab).style.display = 'block';
+        evt.currentTarget.className += ' active'
+      }
+
+      // Get all elements with id="defaultOpen" and click on them automatically upon page load
+      document.getElementById("defaultOpen").click();
 
     </script>
   </body>
