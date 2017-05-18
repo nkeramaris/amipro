@@ -73,19 +73,19 @@
         <p>Get a Free Home Valuation Report</p>
       </div>
        <div class = 'searchbar-buttons'>
-          <a href='javascript:void(0)' class='searchbar-tabs' onclick="openSearch(event, 'seachBuyers')" id="defaultOpen">Search for a Home</a>
-          <a href='javascript:void(0)' class='searchbar-tabs' onclick="openSearch(event, 'searchSellers')">Get a Sale Price Evaluation</a>
+          <a href='javascript:void(0)' class='searchbar-tabs' onclick="openSearch(event, 'seachBuyers'); openForm(event, 'seachbarBuyers')" id="defaultOpen">Search for a Home</a>
+          <a href='javascript:void(0)' class='searchbar-tabs' onclick="openSearch(event, 'searchSellers'); openForm(event, 'seachbarSellers')">Get a Sale Price Evaluation</a>
       </div>
-      <div class="content" id='seachBuyers'>
+      <div class="content" id='seachbarBuyers'>
         <form class="form-wrapper cf">
   	      <input type="text" placeholder="Enter City, Neighborhood or ZIP code" required>
 	      <button type="submit">Search</button>
         </form>
       </div>
-      <div class="content" id='seachSellers'>
+      <div class="content" id='seachbarSellers'>
         <form class="form-wrapper cf">
           <input type="text" placeholder="Enter Your Home's Address" required>
-        <button type="submit">Search</button>
+        <button type="submit">GO</button>
         </form>
       </div>
     </div> 
@@ -145,6 +145,12 @@
       <div class='temp'>
       </div>
 
+    <!-- How Much You Could Save -->
+    <section class = 'savings'>
+      
+    </section>
+
+
     <script>
     // JUMBOTRON SCRIPT
       // Create play button for jumbotron video
@@ -188,7 +194,7 @@ videoMethods.renderVideoPlayButton()
        // In Search Section, display the corresponding content above the tab which is clicked on
        function openSearch(evt, tab) {
 
-        var i, tabcontent, tablinks, searchcontent, searchbar; 
+        var i, tabcontent, tablinks; 
 
         tabcontent = document.getElementsByClassName('searchHeader');
         for (i = 0; i < tabcontent.length; i++) {
@@ -200,20 +206,28 @@ videoMethods.renderVideoPlayButton()
           tablinks[i].className = tablinks[i].className.replace(' active', '');
         }
 
-        searchcontent = document.getElementsByClassName('content');
-        for (i = 0; i < searchcontent.length; i++) {
-          searchcontent[i].style.display = 'none';
-        }
-
-        searchbar = document.getElementsByClassName('searchbar-tabs');
-        for(i = 0; i < searchbar.length; i++) {
-          searchbar[i].className = searchbar[i].className.replace(' active', '');
-        }
-
         document.getElementById(tab).style.display = 'block';
         evt.currentTarget.className += ' active'
       }
       
+        // In Search Section, display the corresponding search bar below the tab which is clicked on
+        function openForm(evt, tab) {
+
+          searchcontent = document.getElementsByClassName('content');
+          for (i = 0; i < searchcontent.length; i++) {
+          searchcontent[i].style.display = 'none';
+          }
+
+          searchbar = document.getElementsByClassName('searchbar-tabs');
+          for(i = 0; i < searchbar.length; i++) {
+          searchbar[i].className = searchbar[i].className.replace(' active', '');
+          }
+
+          document.getElementById(tab).style.display = 'block';
+          evt.currentTarget.className += ' active'
+      }
+
+
       // In Search Section, display the corresponding search bar below the tab which is clicked on
       /*function openSearchbar(evt, tab) {
         var i, tabcontent, tablinks; 
