@@ -74,7 +74,7 @@
       </div>
        <div class = 'searchbar-buttons'>
           <a href='javascript:void(0)' class='searchbar-tabs' onclick="openSearch(event, 'seachBuyers'); openForm(event, 'seachbarBuyers')" id="defaultOpen">Search for a Home</a>
-          <a href='javascript:void(0)' class='searchbar-tabs' onclick="openSearch(event, 'searchSellers'); openForm(event, 'seachbarSellers')">Get a Sale Price Evaluation</a>
+          <a href='javascript:void(0)' class='searchbar-tabs' onclick="openSearch(event, 'searchSellers'); openForm(event, 'seachbarSellers')">Get a Home Value Report</a>
       </div>
       <div class="content" id='seachbarBuyers'>
         <form class="form-wrapper cf">
@@ -99,55 +99,26 @@
       </div>
     </section>
     <div id='forBuyers' class='tabcontent'>
-        <ul class='buyers-section' style='display: block;'>
-          <li class='buyer-1'>
-            <h3> Find Your Home </h3>
-            <p> Search our database of MLS listings to find the home that's perfect for you.</p>
-            <a href='/Users/Home/Desktop/amiagent website/pages/search.html' class='button'>Search Now</a>
-            <div class='number'>
-              <img src='/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/img/numbers-1-icon.png'>
-            </div>
-            <div class='dot-dot-dot'>
-              <img src="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/img/vertical_dots.png" width="64" height="64">
-            </div>
-          </li>
-          <li class='buyer-2'>
-            <h3> View Your Home </h3>
-            <p> Contact the listing agent directly to schedule a viewing, or attend the next open house.</p>
-            <div class='number'>
-              <img src='/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/img/numbers-2-icon.png'>
-            </div>
-            <div class='dot-dot-dot'>
-              <img src="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/img/vertical_dots.png" width="64" height="64">
-            </div>
-          </li>
-          <li class='buyer-3'>
-            <h3> Make an Offer </h3>
-            <p>  Using our state-of-the-art analytics, determine the ideal price and make an offer.  The forms, checklists, and guidance we provide make it easy. </p>
-            <br><br><br><br><br>
-            <div class="carousel-3">
-              <div><img src="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/img/map_layout.png" height="200" width="350"></div>
-            </div>
-            <div class='number'>
-              <img src='/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/img/numbers-3-icon.png'>
-            </div>
-          </li> 
-          <li class='buyer-4'> 
-            <h3> Select Your Home-Buying Professionals </h3>
-            <p> HomeCrisp will connect you with skilled, experienced home-buying professionals to represent you through the closing, including a lawyer, home inspector, mover, and more. </p>
-          </li>
-        </ul>
-      </div>
-      <div id='forSellers' class='tabcontent'>
-        <h1> CONTENT FOR SELLERS </h1>
-        <p> THIS IS THE CONTENT FOR SELLERS </p>
-      </div>
+      <h1> CONTENT FOR BUYERS </h1>
+      <p> THIS IS THE CONTENT FOR BUYERS </p>  
+    </div>
+    <div id='forSellers' class='tabcontent'>
+      <h1> CONTENT FOR SELLERS </h1>
+      <p> THIS IS THE CONTENT FOR SELLERS </p>
+    </div>
       <div class='temp'>
       </div>
 
     <!-- How Much You Could Save -->
     <section class = 'savings'>
-      
+      <div>
+        <p>Compare HomeCrisp to Redfin and Traditional Brokerages</p>
+        <form name="myform" oninput="range1value.value = range1.valueAsNumber">
+        <input name="range1" type="range" step="5000" min="100000" max="2000000" value="500000">  
+        <output id = 'slider_val', name="range1value" for="range1" >500,000</output>
+        </form>
+    </div>
+    <p id = 'demo'></p>
     </section>
 
 
@@ -227,22 +198,6 @@ videoMethods.renderVideoPlayButton()
           evt.currentTarget.className += ' active'
       }
 
-
-      // In Search Section, display the corresponding search bar below the tab which is clicked on
-      /*function openSearchbar(evt, tab) {
-        var i, tabcontent, tablinks; 
-        tabcontent = document.getElementsByClassName('content');
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = 'none';
-        }
-        tablinks = document.getElementsByClassName('searchbar-tabs');
-        for(i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(' active', '');
-        }
-        document.getElementById(tab).style.display = 'block';
-        evt.currentTarget.className += ' active'
-      }*/
-
      // HOW IT WORKS SCRIPT
       // In "How It Works" Section, display the relevant content below the tab which is clicked on
       function openTab(evt, tab) {
@@ -261,6 +216,22 @@ videoMethods.renderVideoPlayButton()
 
       // Get all elements with id="defaultOpen" and click on them automatically upon page load
       document.getElementById("defaultOpen").click();
+    
+    // 'HOW MUCH YOU COULD SAVE' SECTION SCRIPT
+      // function to include commas in dollar value
+      function numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+      //run numberWithCommas function for slider value 
+      var str = document.getElementById('slider_val');
+      var rep = numberWithCommas(str);
+
+      document.getElementById('slider_val').innerHTML = rep;
+
+      //demo
+      //var dem = numberWithCommas(document.getElementById('slider_val');
+      //document.getElementById('demo').innerHTML = dem;
 
     </script>
   </body>
