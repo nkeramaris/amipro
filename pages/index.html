@@ -16,12 +16,21 @@
     <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet"> 
 
     <meta charset="utf-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> 
+
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link type="text/css" rel="stylesheet" href="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/css/main.css"/>
+
   </head>
 
   <body>
@@ -111,18 +120,19 @@
 
     <!-- How Much You Could Save -->
     <section class = 'savings'>
-      <div>
-        <p>Compare HomeCrisp to Redfin and Traditional Brokerages</p>
-        <form name="myform" oninput="range1value.value = range1.valueAsNumber">
-        <input name="range1" type="range" step="5000" min="100000" max="2000000" value="500000">  
-        <output id = 'slider_val', name="range1value" for="range1" >500,000</output>
-        </form>
-    </div>
-    <p id = 'demo'></p>
+      <div id="slider-range-price-sales">
+      </div>
+      <div class="priceContainer">
+        <div class="left">
+          <input type="text" id="minPrice" name="minPrice" style="border: 0; color: #3D80E9; background:#F2F2F2; font-weight: bold;" />
+        </div>
+      <!-- <div class="right">
+        <input type="text" id="maxPrice" name="maxPrice" style="border: 0; color: #3D80E9; background:#F2F2F2; font-weight: bold;" />
+      </div> -->
+      </div>
     </section>
 
-
-    <script>
+<script type="text/javascript">    
     // JUMBOTRON SCRIPT
       // Create play button for jumbotron video
       var videoPlayButton,
@@ -218,20 +228,33 @@ videoMethods.renderVideoPlayButton()
       document.getElementById("defaultOpen").click();
     
     // 'HOW MUCH YOU COULD SAVE' SECTION SCRIPT
-      // function to include commas in dollar value
-      function numberWithCommas(x) {
-      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      // slider
+
+        function addCommas(nStr) {
+        nStr += '';
+        x = nStr.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+          x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
+      }
+
+      $("#slider-range-price-sales").slider({
+        min: 0,
+        step: 50000,
+        values: [100000, 2000000],
+        slide: function (event, ui) {
+        $("#minPrice").val("$" + addCommas(ui.values[0].toString()));
+        $("#maxPrice").val("$" + addCommas(ui.values[1]));
     }
+    });
 
-      //run numberWithCommas function for slider value 
-      var str = document.getElementById('slider_val');
-      var rep = numberWithCommas(str);
+      $("#minPrice").val("$" + $("#slider-range-price-sales").slider("values", 0));
+      $("#maxPrice").val("$" + $("#slider-range-price-sales").slider("values", 1));
 
-      document.getElementById('slider_val').innerHTML = rep;
-
-      //demo
-      //var dem = numberWithCommas(document.getElementById('slider_val');
-      //document.getElementById('demo').innerHTML = dem;
 
     </script>
   </body>

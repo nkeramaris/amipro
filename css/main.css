@@ -279,20 +279,8 @@
   height:  425px;
 }
 
-.savings p {
-  text-align: center;
-}
-
-.savings form {
+#slider-range-price-sales {
   margin-left:auto;
   margin-right: auto;
   width: 75%;
-  text-align: center;
 }
-
-.savings output::before {
-  content:"$";
-}
-
-
-
