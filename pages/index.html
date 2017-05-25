@@ -13,6 +13,8 @@
 
     <link  href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'> 
 
+    <link  href='https://fonts.googleapis.com/css?family=Roboto:400, 600' rel='stylesheet' type='text/css'> 
+
     <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet"> 
 
     <meta charset="utf-8">
@@ -29,7 +31,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <link type="text/css" rel="stylesheet" href="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/css/main.css"/>
+    <link type="text/css" rel="stylesheet" href="/Users/Home/Dropbox/Brokerage/amipro/css/main.css"/>
 
   </head>
 
@@ -51,10 +53,10 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li><a href="tel:1-800-123-4567">1-800-123-4567</a></li>
-            <li><a href="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/pages/about.html">About Us</a></li>
-            <li><a href="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/pages/buy.html">Buy</a></li>
-            <li><a href="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/pages/sell.html">Sell</a></li>
-            <li><a href="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/pages/login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="/Users/Home/Dropbox/Brokerage/amipro/pages/about.html">About Us</a></li>
+            <li><a href="/Users/Home/Dropbox/Brokerage/amipro/pages/buy.html">Buy</a></li>
+            <li><a href="/Users/Home/Dropbox/Brokerage/amipro/pages/sell.html">Sell</a></li>
+            <li><a href="/Users/Home/Dropbox/Brokerage/amipro/pages/login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
@@ -67,8 +69,8 @@
 
     <!-- Jumbotron -->
     <div class='jumbotron'>
-        <video class= 'video' poster="/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/img/boston-skyline.jpg">
-           <source src='/Applications/mampstack-5.6.30-2/apache2/htdocs/amipro/video/demo.mp4'>
+        <video class= 'video' poster="/Users/Home/Dropbox/Brokerage/amipro/img/boston-skyline.jpg">
+           <source src='/Users/Home/Dropbox/Brokerage/amipro/video/demo.mp4'>
         </video>
         <p id="jumbotron-text">The Zero Commission <br> Real Estate Brokerage</p>
     </div>
@@ -115,22 +117,16 @@
       <h1> CONTENT FOR SELLERS </h1>
       <p> THIS IS THE CONTENT FOR SELLERS </p>
     </div>
-      <div class='temp'>
-      </div>
-
+      
     <!-- How Much You Could Save -->
-    <section class = 'savings'>
-      <div id="slider-range-price-sales">
-      </div>
-      <div class="priceContainer">
-        <div class="left">
-          <input type="text" id="minPrice" name="minPrice" style="border: 0; color: #3D80E9; background:#F2F2F2; font-weight: bold;" />
+      <div class="range-slider">
+        <p> COMPARE HOMECRISP WITH OTHER BROKERS </p>
+        <div class='comps-container'>
+          <p id='comp-val'></p>
         </div>
-      <!-- <div class="right">
-        <input type="text" id="maxPrice" name="maxPrice" style="border: 0; color: #3D80E9; background:#F2F2F2; font-weight: bold;" />
-      </div> -->
+        <input class="range-slider__range" id='slider-tool' type="range" value="400000" min="100000" max="2000000" step="10000">
+        <span class="range-slider__value"></span>
       </div>
-    </section>
 
 <script type="text/javascript">    
     // JUMBOTRON SCRIPT
@@ -228,33 +224,51 @@ videoMethods.renderVideoPlayButton()
       document.getElementById("defaultOpen").click();
     
     // 'HOW MUCH YOU COULD SAVE' SECTION SCRIPT
+
       // slider
 
-        function addCommas(nStr) {
-        nStr += '';
-        x = nStr.split('.');
-        x1 = x[0];
-        x2 = x.length > 1 ? '.' + x[1] : '';
-        var rgx = /(\d+)(\d{3})/;
-        while (rgx.test(x1)) {
-          x1 = x1.replace(rgx, '$1' + ',' + '$2');
-        }
-        return x1 + x2;
+      function addCommas(nStr) {
+      nStr += '';
+      x = nStr.split('.');
+      x1 = x[0];
+      x2 = x.length > 1 ? '.' + x[1] : '';
+      var rgx = /(\d+)(\d{3})/;
+      while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+      }
+      return x1 + x2;
       }
 
-      $("#slider-range-price-sales").slider({
-        min: 0,
-        step: 50000,
-        values: [100000, 2000000],
-        slide: function (event, ui) {
-        $("#minPrice").val("$" + addCommas(ui.values[0].toString()));
-        $("#maxPrice").val("$" + addCommas(ui.values[1]));
-    }
+      var rangeSlider = function(){
+        var slider = $('.range-slider'),
+        range = $('.range-slider__range'),
+        value = $('.range-slider__value');
+    
+        slider.each(function(){
+
+        value.each(function(){
+        var value = $(this).prev().attr('value');
+        $(this).html(value);
     });
 
-      $("#minPrice").val("$" + $("#slider-range-price-sales").slider("values", 0));
-      $("#maxPrice").val("$" + $("#slider-range-price-sales").slider("values", 1));
+    range.on('input', function(){
+      $(this).next(value).html(this.value);
+    });
+  });
+};
 
+rangeSlider();
+
+      // comp charts
+        //range = $('.range-slider__range')
+        val = $('.range-slider__value').prev().attr('value');
+        //$('comp-val').html(val);
+        val.each(function(){
+          document.getElementById('comp-val').innerHTML = val;
+          })
+        //range.on('input', function(){
+        //$('comp-val').html(val);
+      //});
 
     </script>
   </body>
