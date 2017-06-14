@@ -122,10 +122,10 @@
       <div class="range-slider">
         <p> COMPARE HOMECRISP WITH OTHER BROKERS </p>
         <div class='comps-container'>
-          <p id='comp-val'></p>
+          <p id='savings-traditional-broker-seller'></p>
         </div>
-        <input class="range-slider__range" id='slider-tool' type="range" value="400000" min="100000" max="2000000" step="10000">
-        <span class="range-slider__value"></span>
+        <input id='rangeSlider' type="range" value="400000" min="100000" max="2000000" step="10000">
+        <span class="housePrice">$400,000</span>
       </div>
 
 <script type="text/javascript">    
@@ -277,45 +277,22 @@ videoMethods.renderVideoPlayButton()
     
     // 'HOW MUCH YOU COULD SAVE' SECTION SCRIPT
 
-      // slider
-
-      function addCommas(nStr) {
-      nStr += '';
-      x = nStr.split('.');
-      x1 = x[0];
-      x2 = x.length > 1 ? '.' + x[1] : '';
-      var rgx = /(\d+)(\d{3})/;
-      while (rgx.test(x1)) {
-        x1 = x1.replace(rgx, '$1' + ',' + '$2');
-      }
-      return x1 + x2;
+            // function to add commas to number values
+      function numCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       }
 
-      var rangeSlider = function(){
-        var slider = $('.range-slider'),
-        range = $('.range-slider__range'),
-        value = $('.range-slider__value');
-    
-        slider.each(function(){
-
-        value.each(function(){
-        var value = $(this).prev().attr('value');
-        $(this).html(value);
-    });
-
-    range.on('input', function(){
-      $(this).next(value).html(this.value);
-    });
-  });
-};
-
-rangeSlider();
-
-      // comp charts
- 
-        var sv1 = $('.range-slider__value');
-
-        console.log(document.getElementById('comp-val').innerHTML = sv1);
+           // slider
+      $("#rangeSlider").change(function() {
+        let $value = $(this).val(),
+          $fee1 = $("#priceTotal1").data("fee");
+          //$fee2 = $("#priceTotal2").data("fee"),
+          //$fee3 = $("#priceTotal3").data("fee");
+      $("#housePrice").text("$" + numCommas($value));
+      $("#savings-traditional-broker-seller").text("$" + numCommas(($value * .025).toFixed(0)));
+      //$("#priceTotal2").text("$" + numCommas(($fee2 / 100 * $value).toFixed(0)));
+      //$("#priceTotal3").text("$" + numCommas(($fee3 / 100 * $value).toFixed(0)));
+});
 
 /*
 window.onload(function(){

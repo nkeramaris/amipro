@@ -354,7 +354,7 @@
 }
 
 /* Range Slider */ 
-#slider-tool {
+#rangeSlider {
   -webkit-appearance: none;
   width: 75%;
   margin-left: 5%; 
@@ -368,7 +368,7 @@
   display: inline-block;
 }
 
-#slider-tool::-webkit-slider-thumb {
+#rangeSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: none;
   height: 20px;
@@ -378,13 +378,13 @@
   transition: background .15s ease-in-out;
 }
 
-#slider-tool::-webkit-slider-thumb:hover {
+#rangeSlider::-webkit-slider-thumb:hover {
   background: #1abc9c;
   cursor: pointer;
 }
 
-/* Range Label */
-.range-slider__value {
+/* Range-slider Label */
+.housePrice {
   display: inline-block;
   position: relative;
   width: 100px;
@@ -400,11 +400,7 @@
   letter-spacing: .75px;
 }
 
-.range-slider__value::before {
-  content:'$';
-}
-
-.range-slider__value::after {
+.housePrice::after {
   position: absolute;
   top: 9.5px;
   left: -7px;
