@@ -118,6 +118,39 @@
   color: #737373; 
   padding-bottom: 5px;
   border-bottom: 5px solid #737373;
+
+}
+
+
+.searchbar-tab-not-selected {
+  text-decoration: none;
+  color: #737373; 
+  padding-bottom: 5px;
+  border-bottom: 5px solid white;
+}
+
+.searchbar-tab-not-selected:hover {
+  text-decoration: none;
+  color: #737373;
+}
+
+.searchbar-tab-selected {
+  text-decoration: none;
+  color: #737373; 
+  padding-bottom: 5px;
+  border-bottom: 5px solid #737373;
+  
+}
+
+.searchbar-tab-selected:hover {
+  text-decoration: none;
+  color: #737373; 
+  cursor: default;
+}
+
+.searchbar-tab-selected:focus {
+  text-decoration: none;
+  color: #737373; 
 }
 
 .searchbar-buttons {
@@ -251,7 +284,6 @@
 }
 
 .how-it-works .buyers-and-sellers-buttons a {
-  color:white;
   position: relative; 
   display: inline-block;
   text-align: center;
@@ -262,6 +294,24 @@
   font-size: 22px;
   font-weight: bold;
   padding-top: 10px;
+}
+
+.how-it-works-tab-selected {
+ background: white;
+ color:#737373;
+ cursor: default;
+}
+
+.how-it-works-tab-selected:hover {
+  color:#737373;
+}
+
+.how-it-works-tab-not-selected {
+  color: white;
+}
+
+.how-it-works-tab-not-selected:hover {
+  color: white;
 }
 
 /* Create an active/current tablink class */

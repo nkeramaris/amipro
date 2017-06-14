@@ -77,23 +77,23 @@
     
     <!-- Search -->
     <div class = "search-container">
-      <div class='searchHeader' id='seachBuyers'>
+      <div class='searchHeader' id='searchBuyersTag'>
         <p>Search Our Database of MLS Lisings</p>
       </div>
-      <div class='searchHeader' id='searchSellers'>
+      <div class='searchHeader' id='searchSellersTag'>
         <p>Get a Free Home Valuation Report</p>
       </div>
        <div class = 'searchbar-buttons'>
-          <a href='javascript:void(0)' class='searchbar-tabs' onclick="openSearch(event, 'seachBuyers'); openForm(event, 'seachbarBuyers')" id="defaultOpen">Search for a Home</a>
-          <a href='javascript:void(0)' class='searchbar-tabs' onclick="openSearch(event, 'searchSellers'); openForm(event, 'seachbarSellers')">Get a Home Value Report</a>
+          <a href='javascript:void(0)' class='searchbar-tabs' onclick="openSearch(event, 'searchBuyers'); " id="searchBuyersLabel">Search for a Home</a>
+          <a href='javascript:void(0)' class='searchbar-tabs' onclick="openSearch(event, 'searchSellers');" id="searchSellersLabel">Get a Home Value Report</a>
       </div>
-      <div class="content" id='seachbarBuyers'>
+      <div class="content" id='searchBuyersDefText'>
         <form class="form-wrapper cf">
   	      <input type="text" placeholder="Enter City, Neighborhood or ZIP code" required>
 	      <button type="submit">Search</button>
         </form>
       </div>
-      <div class="content" id='seachbarSellers'>
+      <div class="content" id='searchSellersDefText'>
         <form class="form-wrapper cf">
           <input type="text" placeholder="Enter Your Home's Address" required>
         <button type="submit">GO</button>
@@ -105,15 +105,15 @@
     <section class="how-it-works">
       <p>Here's how it works</p>
       <div class = 'buyers-and-sellers-buttons'>
-          <a href='javascript:void(0)' class='tablinks' onclick="openTab(event, 'forBuyers')" id="defaultOpen">For Buyers</a>
-          <a href='javascript:void(0)' class='tablinks' onclick="openTab(event, 'forSellers')">For Sellers</a>
+          <a href='javascript:void(0)' class='tablinks' onclick="openTab(event, 'forBuyers')" id="forBuyers">For Buyers</a>
+          <a href='javascript:void(0)' class='tablinks' onclick="openTab(event, 'forSellers')" id="forSellers">For Sellers</a>
       </div>
     </section>
-    <div id='forBuyers' class='tabcontent'>
+    <div id='content-Buyers' class='tabcontent'>
       <h1> CONTENT FOR BUYERS </h1>
       <p> THIS IS THE CONTENT FOR BUYERS </p>  
     </div>
-    <div id='forSellers' class='tabcontent'>
+    <div id='content-Sellers' class='tabcontent'>
       <h1> CONTENT FOR SELLERS </h1>
       <p> THIS IS THE CONTENT FOR SELLERS </p>
     </div>
@@ -171,6 +171,29 @@ videoMethods.renderVideoPlayButton()
        // In Search Section, display the corresponding content above the tab which is clicked on
        function openSearch(evt, tab) {
 
+          if(tab=="searchBuyers"){
+            document.getElementById(tab+"Tag").style.display = 'block';
+            document.getElementById(tab+"Label").className = 'searchbar-tab-selected';
+            document.getElementById(tab+"DefText").style.display = 'block';
+
+            document.getElementById("searchSellersTag").style.display = 'none';
+            //document.getElementById("searchSellersLabel").style.display = 'none';
+            document.getElementById("searchSellersLabel").className = 'searchbar-tab-not-selected';
+            document.getElementById("searchSellersDefText").style.display = 'none';
+          }
+          else
+          {
+            document.getElementById(tab+"Tag").style.display = 'block';
+            //  document.getElementById(tab+"Label").style.display = 'block';
+            document.getElementById(tab+"Label").className = 'searchbar-tab-selected';
+            document.getElementById(tab+"DefText").style.display = 'block';
+
+            document.getElementById("searchBuyersTag").style.display = 'none';
+            document.getElementById("searchBuyersLabel").className = 'searchbar-tab-not-selected';
+            document.getElementById("searchBuyersDefText").style.display = 'none';
+          }
+          return;
+
         var i, tabcontent, tablinks; 
 
         tabcontent = document.getElementsByClassName('searchHeader');
@@ -190,7 +213,8 @@ videoMethods.renderVideoPlayButton()
         // In Search Section, display the corresponding search bar below the tab which is clicked on
         function openForm(evt, tab) {
 
-          searchcontent = document.getElementsByClassName('content');
+          document.getElementById(tab).display()
+          //searchcontent = document.getElementsByClassName('content');
           for (i = 0; i < searchcontent.length; i++) {
           searchcontent[i].style.display = 'none';
           }
@@ -204,9 +228,36 @@ videoMethods.renderVideoPlayButton()
           evt.currentTarget.className += ' active'
       }
 
+        // Click on buyer's search label automaically upon page load
+        document.getElementById("searchBuyersLabel").click();
+        openSearch(event, 'searchBuyers');
+
      // HOW IT WORKS SCRIPT
       // In "How It Works" Section, display the relevant content below the tab which is clicked on
       function openTab(evt, tab) {
+
+        if(tab=="forBuyers")
+        {
+          document.getElementById(tab).style.display = 'inline-block';
+          document.getElementById(tab).className = 'how-it-works-tab-selected';
+          document.getElementById('content-Buyers').style.display = 'inline'
+
+          //document.getElementById('forSellers').style.display = 'none';
+          document.getElementById('forSellers').className = 'how-it-works-tab-not-selected';
+          document.getElementById('content-Sellers').style.display = 'none';
+        }
+        else
+        {
+          document.getElementById(tab).style.display = 'inline-block';
+          document.getElementById(tab).className = 'how-it-works-tab-selected';
+          document.getElementById('content-Sellers').style.display = 'inline'
+
+          //document.getElementById('forBuyers').style.display = 'none';
+          document.getElementById('forBuyers').className = 'how-it-works-tab-not-selected';
+          document.getElementById('content-Buyers').style.display = 'none';
+        }
+        return;
+
         var i, tabcontent, tablinks; 
         tabcontent = document.getElementsByClassName('tabcontent');
         for (i = 0; i < tabcontent.length; i++) {
@@ -220,8 +271,9 @@ videoMethods.renderVideoPlayButton()
         evt.currentTarget.className += ' active'
       }
 
-      // Get all elements with id="defaultOpen" and click on them automatically upon page load
-      document.getElementById("defaultOpen").click();
+      // Click on for buyer's label automaically upon page load
+        document.getElementById("forBuyers").click();
+        openTab(event, 'forBuyers');
     
     // 'HOW MUCH YOU COULD SAVE' SECTION SCRIPT
 
@@ -260,16 +312,17 @@ videoMethods.renderVideoPlayButton()
 rangeSlider();
 
       // comp charts
-        //range = $('.range-slider__range')
-        val = $('.range-slider__value').prev().attr('value');
-        //$('comp-val').html(val);
-        val.each(function(){
-          document.getElementById('comp-val').innerHTML = val;
-          })
-        //range.on('input', function(){
-        //$('comp-val').html(val);
-      //});
+ 
+        var sv1 = $('.range-slider__value');
 
+        console.log(document.getElementById('comp-val').innerHTML = sv1);
+
+/*
+window.onload(function(){
+      document.getElementById("searchBuyersLabel").click();
+      openSearch(event, 'searchBuyers');
+});
+*/
     </script>
   </body>
 </html>
